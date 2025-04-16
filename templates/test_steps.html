@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Steps for Test ID: {{ test_id }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainstyles.css') }}">
+</head>
+<body>
+    <h1>Test Steps for Test ID: {{ test_id }}</h1>
+    <a href="{{ url_for('index') }}"><button>Main Page</button></a>
+    <a href="{{ url_for('job_details') }}"><button>Job Log Details</button></a>
+    <a href="{{ url_for('job_steps_details') }}"><button>Job Steps Log Details</button></a>
+    <a href="{{ url_for('edit_steps', test_id=test_id )}}"><button>Edit Test Steps</button></a>
+    <form action="{{ url_for('run_test', test_id=test_id )}}" method="POST">
+        <button id="RunPlanButton">Run Test Plan</button>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Order Number</th>
+                <th>Step Name</th>
+                <th>ID</th>
+                <th>Status</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Type</th>
+                <th>SQL Code</th>
+                <th>Target User</th>
+                <th>Latest Run ID</th>
+                <th>Latest Output</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for step in test_steps %}
+                <tr>
+                    <td>{{ step['ORDERNUMBER'] }}</td>
+                    <td>{{ step['NAME'] }}</td>
+                    <td>{{ step['ID'] }}</td>
+                    <td>{{ step['STATUS'] }}</td>
+                    <td>{{ step['START_TIME'] }}</td>
+                    <td>{{ step['END_TIME'] }}</td>
+                    <td>{{ step['TYPE'] }}</td>
+                    <td>{{ step['SQL_CODE'] }}</td>
+                    <td>{{ step['TARGET_USER'] }}</td>
+                    <td>{{ step['LATEST_RUN_ID'] }}</td>
+                    <td>{{ step['LATEST_OUTPUT'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+   <script src="{{ url_for('static', filename='js/test_steps.js') }}"></script>
+
+</body>
+</html>
