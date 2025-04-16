@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainstyles.css') }}">
+</head>
+<body>
+    <h1>Job Details</h1>
+    <a href="{{ url_for('index') }}"><button>Main Page</button></a>
+    
+    <form action="{{ url_for('job_details') }}" method="GET">
+        <label for="run_id">Filter by RUN_ID:</label>
+        <input type="text" id="run_id" name="run_id">
+        <button type="submit">Filter</button>
+    </form>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Run ID</th>
+                <th>Test ID</th>
+                <th>Test Name</th>
+                <th>Event</th>
+                <th>Event Time</th>
+                <th>Error Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in job_details %}
+                <tr>
+                    <td>{{ job['RUN_ID'] }}</td>
+                    <td>{{ job['TEST_ID'] }}</td>
+                    <td>{{ job['TEST_NAME'] }}</td>
+                    <td>{{ job['EVENT'] }}</td>
+                    <td>{{ job['EVENT_TIME'] }}</td>
+                    <td>{{ job['ERROR_MESSAGE'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
