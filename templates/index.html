@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Table Contents</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainstyles.css') }}">
+</head>
+<body>
+    <h1>Test Table Contents</h1>
+
+    </form>
+
+    <a href="{{ url_for('job_details') }}"><button>Job Log Details</button></a>
+    <a href="{{ url_for('job_steps_details') }}"><button>Job Steps Log Details</button></a>
+
+
+
+    <form action="{{ url_for('index') }}" method="GET">
+        <label for="search_name">Search by Name:</label>
+        <input type="text" id="search_name" name="search_name">
+        <button type="submit">Search</button>
+    </form>
+    <br><br>
+
+    <button type="button" onclick="openTestPopup()">Add Test</button>
+
+    <div id="TestModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Test</h2>
+            <form id="testForm" onsubmit="event.preventDefault()" action="{{ url_for('add_test') }}" method="POST">
+    
+                <label for="new_test_name">Test Name:</label><br>
+                <input type="text" id="new_test_name" name="new_test_name"><br>
+                <input type="button" value="Submit" onclick="submitFormData()">
+            </form>
+        </div>
+    </div>
+    
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for test in tests %}
+            <tr>
+                <td>{{ test['ID'] }}</td>
+                <td><a href="{{ url_for('test_steps', test_id=test['ID']) }}">{{ test['NAME'] }}</a></td>
+                <td>{{ test['STATUS'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <script src="{{ url_for('static', filename='js/add_test.js') }}"></script>
+
+</body>
+</html>
