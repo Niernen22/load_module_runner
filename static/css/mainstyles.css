@@ -1,0 +1,305 @@
+body {
+    background-color: #11150d;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 700;
+}
+
+button, a button, input[type="button"], input[type="submit"] {
+    background-color: #528023;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    border-radius: 5px;
+}
+
+button:hover, a button:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: #4b6f2c;
+    color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+a {
+    color: #76b042;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    color: #85ca49;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #292929;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #2d5004;
+    font-weight: 500;
+}
+
+th {
+    background-color: #2d5004;
+    transition: box-shadow 0.3s ease;
+}
+
+tr:hover {
+    background-color: #366105;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+input[type="text"],input[type="password"]{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 15%;
+    box-sizing: border-box;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #292929;
+    color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #606169;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.modal label {
+    font-weight: 500;
+}
+
+.modal input[type="text"],
+.modal select
+{
+    width: 30%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.close {
+    color: #aaa;
+    float: ight;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #76b042;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#generateSQLButton {
+    display: none;
+}
+
+#sql_code_display {
+    display: none;
+    background-color: #ecebeb;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
+    color: #333;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    max-height: 300px;
+    overflow-y: auto;
+    word-wrap: break-word; 
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.checkbox-wrapper-4 * {
+    box-sizing: border-box;
+}
+.checkbox-wrapper-4 .cbx {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+}
+.checkbox-wrapper-4 .cbx:not(:last-child) {
+    margin-right: 6px;
+}
+.checkbox-wrapper-4 .cbx:hover {
+    background: rgba(0,119,255,0.06);
+}
+.checkbox-wrapper-4 .cbx span {
+    display: inline-flex;
+    align-items: center;
+}
+.checkbox-wrapper-4 .cbx span:first-child {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    transform: scale(1);
+    border: 2px solid #cccfdb;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 1px rgba(0,16,75,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.checkbox-wrapper-4 .cbx span:first-child svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+}
+.checkbox-wrapper-4 .cbx span:last-child {
+    padding-left: 8px;
+    line-height: 24px;
+}
+.checkbox-wrapper-4 .cbx:hover span:first-child {
+    border-color: #76b042;
+}
+.checkbox-wrapper-4 .inp-cbx {
+    position: absolute;
+    visibility: hidden;
+}
+.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child {
+    background: #528023;
+    border-color: #76b042;
+    animation: wave-4 0.4s ease;
+}
+.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child svg {
+    stroke-dashoffset: 0;
+}
+.checkbox-wrapper-4 .inline-svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    user-select: none;
+}
+@media screen and (max-width: 640px) {
+    .checkbox-wrapper-4 .cbx {
+        width: 100%;
+        display: inline-block;
+    }
+}
+@-moz-keyframes wave-4 {
+    50% {
+        transform: scale(0.9);
+    }
+}
+@-webkit-keyframes wave-4 {
+    50% {
+        transform: scale(0.9);
+    }
+}
+@-o-keyframes wave-4 {
+    50% {
+        transform: scale(0.9);
+    }
+}
+@keyframes wave-4 {
+    50% {
+        transform: scale(0.9);
+    }
+}
+
+.dragging {
+    background-color: #528023;
+    opacity: 0.6;
+}
+
+.drop-target {
+    border: 2px dashed #76b042;
+    background-color: #2d5004;
+}
+
+tr {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.moving-up {
+    transform: translateY(-10px);
+}
+
+.moving-down {
+    transform: translateY(10px);
+}
+
+
+.paintbrush-button {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background-color: #528023;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.paintbrush-button:hover {
+    background-color: #3e611b;
+}
