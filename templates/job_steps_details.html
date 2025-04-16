@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Steps Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainstyles.css') }}">
+</head>
+<body>
+    <h1>Job Steps Details</h1>
+    <a href="{{ url_for('index') }}"><button>Main Page</button></a>
+    
+    <form action="{{ url_for('job_steps_details') }}" method="GET">
+        <label for="run_id">Filter by RUN_ID:</label>
+        <input type="text" id="run_id" name="run_id">
+        <button type="submit">Filter</button>
+    </form>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Run ID</th>
+                <th>Step ID</th>
+                <th>Step Name</th>
+                <th>Event</th>
+                <th>Event Time</th>
+                <th>Output Message</th>
+                <th>Error Message</th>
+                <th>Job Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for step in job_steps_details %}
+                <tr>
+                    <td>{{ step['RUN_ID'] }}</td>
+                    <td>{{ step['STEP_ID'] }}</td>
+                    <td>{{ step['STEP_NAME'] }}</td>
+                    <td>{{ step['EVENT'] }}</td>
+                    <td>{{ step['EVENT_TIME'] }}</td>
+                    <td>{{ step['OUTPUT_MESSAGE'] }}</td>
+                    <td>{{ step['ERROR_MESSAGE'] }}</td>
+                    <td>{{ step['JOBNAME'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
