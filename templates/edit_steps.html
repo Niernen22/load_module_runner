@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Test Steps for Test ID: {{ test_id }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainstyles.css') }}">
+</head>
+<body>
+    <h1>Edit Test Steps for Test ID: {{ test_id }}</h1>
+    <button onclick="finishEditing()">Finish Editing</button>
+    <a href="{{ url_for('index') }}"><button>Main Page</button></a>
+    <p>
+        You can drag and drop the steps below to rearrange their order - save with [Finish Editing].
+    </p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Order Number</th>
+                <th>Step Name</th>
+                <th>Type</th>
+                <th>SQL Code</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for step in test_steps %}
+            <tr>
+                <td>{{ step['ORDERNUMBER'] }}</td>
+                <td>{{ step['NAME'] }}</td>
+                <td>{{ step['TYPE'] }}</td>
+                <td>{{ step['SQL_CODE'] }}</td>
+                <td>
+                    <form action="{{ url_for('delete_step') }}" method="post">
+                        <input type="hidden" name="id" value="{{ step['ID'] }}">
+                        <input type="hidden" name="test_id" value="{{ test_id }}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button type="button" onclick="openPopup()">Add Step</button>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Step</h2>
+            <form id="stepForm" onsubmit="event.preventDefault()">
+
+                <label for="new_step_name">Step Name:</label><br>
+                <input type="text" id="new_step_name" name="new_step_name"><br>
+
+
+                <label for="step_type">Step Type:</label><br>
+                <span>LM Job</span><br><br>                
+                <input type="hidden" id="step_type_input" name="step_type" value="LM_JOB">               
+                
+                
+                <div id="LMparametersForm" style="display: block;">
+                    <h3>Enter Parameters for LM_JOB</h3>
+                
+                    <label for="module">Select Module:</label><br>
+                    <select id="module" name="module" onchange="getTypesForModule(this.value); getNamesForModule(this.value)">
+                        {% for module in modules %}
+                        <option value="{{ module }}">{{ module }}</option>
+                        {% endfor %}
+                    </select><br><br>
+
+                    <p>Type: <span id="type"></span></p><br>
+
+                    <label for="name">Select Name:</label><br>
+                    <select id="name" name="name"></select><br><br>
+                </div>
+                
+                <input type="button" value="Submit" onclick="submitFormData()">
+            </form>
+        </div>
+    </div>
+    
+    <script>test_id="{{ test_id }}"</script>    
+    <script src="{{ url_for('static', filename='js/edit_steps.js') }}"></script>
+</body>
+</html>
